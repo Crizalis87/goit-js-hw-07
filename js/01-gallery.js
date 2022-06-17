@@ -25,8 +25,23 @@ photoGallery.addEventListener("click", (event) => {
   }
 
   modalBox = basicLightbox.create(
-    `<img src="${event.target.dataset.source}"/>`
+    `<img src="${event.target.dataset.source}"/>`,
+    {
+      onShow: () => {
+        window.addEventListener("keydown", closeModal);
+      },
+      onClose: () => {
+        window.addEventListener("keydown", closeModal);
+      },
+    }
   );
 
   modalBox.show();
 });
+
+function closeModal(event) {
+  if (event.code !== "Escape") {
+    return;
+  }
+  modalImage.close();
+}
