@@ -43,5 +43,5 @@ function closeModal(event) {
   if (event.code !== "Escape") {
     return;
   }
-  modalImage.close();
+  modalBox.close();
 }
